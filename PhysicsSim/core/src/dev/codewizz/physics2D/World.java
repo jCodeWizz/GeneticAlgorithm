@@ -44,7 +44,7 @@ public class World {
 		this.addObject(ground);
 
 		for (int i = 0; i < 50; i++) {
-			Agent agent = new Agent(-400f, -200f, 20);
+			Agent agent = new Agent(0f, -200f, 20);
 			this.addObject(agent);
 		}
 	}
@@ -153,19 +153,24 @@ public class World {
 				}
 			}
 			
-			for(int i = 0; i < Agent.length; i++) {
-				ArrayList<Gene> genes = bestAgent.getGeneStreng();
-				
-				
+			
+			
+			for(int p = 0; p < 50; p++) {
 				ArrayList<Gene> newGenes = new ArrayList<>();
-				
-				for(Gene gene : genes) {
-					if (gene.getScore() < 0.5f) {
-						newGenes.add(new Gene(gene.getIndex()));
+				ArrayList<Gene> genes = bestAgent.getGeneStreng();
+				for(int i = 0; i < Agent.length; i++) {
+					if(i < genes.size()) {
+						if(genes.get(i).getScore() < 0.5f) {
+							newGenes.add(new Gene(i));
+						} else {
+							newGenes.add(new Gene(genes.get(i).getDirectionString(), i));
+						}
+					} else {
+						newGenes.add(new Gene(genes.get(i).getDirectionString(), i));
 					}
 				}
-
-				Agent newAgent = new Agent(-400f, -200f, 20, newGenes);
+				
+				Agent newAgent = new Agent(0f, -200f, 20, newGenes);
 				addObject(newAgent);
 			}
 			
