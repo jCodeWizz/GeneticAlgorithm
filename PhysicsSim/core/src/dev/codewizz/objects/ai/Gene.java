@@ -1,37 +1,37 @@
 package dev.codewizz.objects.ai;
 
-import com.badlogic.gdx.math.Vector2;
-
-import dev.codewizz.utils.Direction;
+import dev.codewizz.utils.Debug;
 import dev.codewizz.utils.Utils;
 
 public class Gene {
 
-	private Direction dir;
+	private Action action;
 	private int index;
 	private float score = 0.5f;
 	
-	public Gene(Direction dir, int index) {
-		this.dir = dir;
+	public Gene(Action action, int index) {
+		this.action = action;
 		this.index = index;
 	}
 	
 	public Gene(int index) {
 		this.index = index;
 		
-		if(Utils.RANDOM.nextBoolean()) {
-			this.dir = Direction.Left;
+		int r = Utils.RANDOM.nextInt(3);
+		
+		if(r == 0) {
+			this.action = Action.Left;
+		} else if (r == 1){
+			this.action = Action.Right;
+		} else if(r == 2) {
+			this.action = Action.Jump;
 		} else {
-			this.dir = Direction.Right;
+			Debug.error("GENE HAS MORE RANDOM THAN ACTIONS");
 		}
 	}
 	
-	public Vector2 getDir() {
-		return this.dir.getDir();
-	}
-	
-	public Direction getDirectionString() {
-		return this.dir;
+	public Action getAction() {
+		return this.action;
 	}
 	
 	public float getScore() {

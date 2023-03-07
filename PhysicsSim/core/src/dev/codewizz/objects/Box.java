@@ -48,7 +48,6 @@ public class Box extends GameObject {
 			Main.shapeDrawer.line(pos[1], pos[2], color);
 			Main.shapeDrawer.line(pos[2], pos[3], color);
 			Main.shapeDrawer.line(pos[3], pos[0], color);
-			Main.shapeDrawer.filledCircle(((BoxCollider) collider).getCenter(), 2f, Color.BLACK);
 		}
 		
 		

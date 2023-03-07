@@ -287,9 +287,9 @@ public class World {
 			object.render(b);
 		}
 
-		for (Vector2 point : points) {
-			Main.shapeDrawer.filledCircle(point, 2f, Color.RED);
-		}
+		//for (Vector2 point : points) {
+		//	Main.shapeDrawer.filledCircle(point, 2f, Color.RED);
+		//}
 
 		Main.shapeDrawer.filledCircle(bestPos, 2f, Color.RED);
 	}

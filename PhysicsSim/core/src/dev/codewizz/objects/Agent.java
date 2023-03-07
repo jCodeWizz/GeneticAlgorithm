@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
 
+import dev.codewizz.objects.ai.Action;
 import dev.codewizz.objects.ai.Gene;
 import dev.codewizz.utils.Utils;
 
@@ -13,7 +14,7 @@ public class Agent extends Box {
 	public static boolean started = true;
 	public static int length = 500;
 	
-	public static int mode = 2;
+	public static int mode = 1;
 
 	private ArrayList<Gene> geneStreng = new ArrayList<Gene>();
 	private int index = 0;
@@ -56,8 +57,18 @@ public class Agent extends Box {
 			
 			prevPos = new Vector2(nextPos);
 			
-			
 			Vector2 v = new Vector2(geneStreng.get(index).getDir()).scl(movementSpeed);
+			
+			Action action = geneStreng.get(index).getAction();
+			
+			if(action == Action.Left) {
+				
+			} else if(action == Action.Right) {
+				
+			} else if(action == Action.Jump) {
+				
+			}
+			
 			this.rigidbody.move(v);
 			nextPos = new Vector2(this.rigidbody.getPosition());
 			
@@ -65,7 +76,7 @@ public class Agent extends Box {
 			System.out.println("Prev: " + prevPos);
 			System.out.println("Delta: " + v);
 			System.out.println("Next: " + nextPos);
-			System.out.println("Gene: " + geneStreng.get(index).getDirectionString());
+			System.out.println("Gene: " + geneStreng.get(index).getAction().toString());
 			System.out.println("B: " + condition(prevPos, nextPos));
 			
 			if(condition(prevPos, nextPos)) {
